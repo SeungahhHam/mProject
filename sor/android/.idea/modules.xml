@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Asend.iml" filepath="$PROJECT_DIR$/.idea/modules/Asend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Asend.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Asend.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1513497419/Asend.react-native-community_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/-1513497419/Asend.react-native-community_async-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-673127182/Asend.react-native-community_masked-view.iml" filepath="$PROJECT_DIR$/.idea/modules/-673127182/Asend.react-native-community_masked-view.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1843913098/Asend.react-native-community_slider.iml" filepath="$PROJECT_DIR$/.idea/modules/-1843913098/Asend.react-native-community_slider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1369920475/Asend.react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/.idea/modules/-1369920475/Asend.react-native-gesture-handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1593823529/Asend.react-native-reanimated.iml" filepath="$PROJECT_DIR$/.idea/modules/-1593823529/Asend.react-native-reanimated.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1582215346/Asend.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/-1582215346/Asend.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-170207002/Asend.react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/-170207002/Asend.react-native-screens.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/223650737/Asend.react-native-splash-screen.iml" filepath="$PROJECT_DIR$/.idea/modules/223650737/Asend.react-native-splash-screen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1538950285/Asend.react-native-svg.iml" filepath="$PROJECT_DIR$/.idea/modules/-1538950285/Asend.react-native-svg.iml" />
+    </modules>
+  </component>
+</project>
