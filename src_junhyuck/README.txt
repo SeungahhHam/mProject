@@ -10,7 +10,6 @@ yarn add react-native-vector-icons
 npm i @react-native-async-storage/async-storage
 npm i react-native-loading-spinner-overlay
 npm i @react-navigation/material-top-tabs
-yarn add @react-native-community/viewpager
 
 >> android/app/build.gradle 디렉토리에서 최하단에 다음 코드 추가
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
