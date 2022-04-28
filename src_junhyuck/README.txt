@@ -6,6 +6,11 @@ yarn add react-native
 yarn add react-native-screens
 yarn add react-native-safe-area-context
 yarn add react-native-vector-icons
+
+npm i @react-native-async-storage/async-storage
+npm i react-native-loading-spinner-overlay
+npm i @react-navigation/material-top-tabs
+
 >> android/app/build.gradle 디렉토리에서 최하단에 다음 코드 추가
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 project.ext.vectoricons =[
