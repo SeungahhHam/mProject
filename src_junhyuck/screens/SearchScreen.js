@@ -3,12 +3,11 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {StyleSheet, View, Button} from 'react-native';
 import FreeScreen from './FreeScreen';
-import QuestionScreen from './QuestionScreen';
-import CertificationScreen from './CertificationScreen';
-import RecruitScreen from './RecruitScreen';
+import QuestionScreen from './Question/QuestionScreen';
+import CertificationScreen from './Certification/CertificationScreen';
+import RecruitScreen from './Recruit/RecruitScreen';
 import WriteScreen from './WriteScreen';
 
-const Stack = createNativeStackNavigator();
 const Tab = createMaterialTopTabNavigator();
 
 function SearchScreen() {

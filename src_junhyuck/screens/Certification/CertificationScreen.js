@@ -8,14 +8,14 @@ import {
   FlatList,
   ScrollView,
 } from 'react-native';
-import FloatingWriteButton from '../components/FloatingWriteButton';
-import SearchBar from '../components/SearchBar';
-import FreeList from '../components/FreeListItem';
-import SearchContext from '../contexts/SearchContext';
-import {BASE_URL} from '../config';
+import CertificationFloatingWriteButton from './CertificationFloatingWriteButton';
+import SearchBar from '../../components/SearchBar';
+import CertificationList from './CertificationListItem';
+import SearchContext from '../../contexts/SearchContext';
+import {BASE_URL} from '../../config';
 import {useIsFocused} from '@react-navigation/native';
 
-function FreeScreen({navigation}) {
+function CertificationScreen({navigation}) {
   const {keyword} = useContext(SearchContext);
   const [lists, setLists] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -43,7 +43,7 @@ function FreeScreen({navigation}) {
             lists
               .reverse()
               .map(free => (
-                <FreeList
+                <CertificationList
                   date={free.time}
                   title={free.title}
                   body={free.text}
@@ -53,7 +53,7 @@ function FreeScreen({navigation}) {
           )}
         </View>
       </ScrollView>
-      <FloatingWriteButton />
+      <CertificationFloatingWriteButton />
     </View>
   );
 }
@@ -61,6 +61,7 @@ function FreeScreen({navigation}) {
 const styles = StyleSheet.create({
   block: {
     flex: 1,
+    backgroundColor: 'white',
   },
   button: {
     flexDirection: 'row',
@@ -71,6 +72,7 @@ const styles = StyleSheet.create({
   },
   semiblock: {
     alignItems: 'center',
+    backgroundColor: '#F2F2F2',
   },
   block2: {
     backgroundColor: 'white',
@@ -95,4 +97,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FreeScreen;
+export default CertificationScreen;

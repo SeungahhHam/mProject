@@ -4,17 +4,18 @@ import MainTab from './MainTab';
 import UserInfo from './UserInfoScreen';
 import Login from './LoginScreen';
 import Register from './RegisterScreen';
+import SplashScreen from './SplashScreen';
 
 const Stack = createNativeStackNavigator();
 
-function RootStack() {
+const Auth = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="MainTab"
-        component={MainTab}
-        options={{headerShown: false}}
-      />
+      {/*<Stack.Screen*/}
+      {/*  name="Logout"*/}
+      {/*  component={LogoutScreen}*/}
+      {/*  options={{headerShown: false}}*/}
+      {/*/>*/}
       <Stack.Screen
         name="Login"
         component={Login}
@@ -23,6 +24,29 @@ function RootStack() {
       <Stack.Screen
         name="Register"
         component={Register}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  );
+};
+
+function RootStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="SplashScreen"
+        component={SplashScreen}
+        // Hiding header for Splash Screen
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MainTab"
+        component={MainTab}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Auth"
+        component={Auth}
         options={{headerShown: false}}
       />
 

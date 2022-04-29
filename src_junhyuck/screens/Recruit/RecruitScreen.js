@@ -8,14 +8,14 @@ import {
   FlatList,
   ScrollView,
 } from 'react-native';
-import FloatingWriteButton from '../components/FloatingWriteButton';
-import SearchBar from '../components/SearchBar';
-import FreeList from '../components/FreeListItem';
-import SearchContext from '../contexts/SearchContext';
-import {BASE_URL} from '../config';
+import RecruitFloatingWriteButton from './RecruitFloatingWriteButton';
+import SearchBar from '../../components/SearchBar';
+import RecruitList from './RecruitListItem';
+import SearchContext from '../../contexts/SearchContext';
+import {BASE_URL} from '../../config';
 import {useIsFocused} from '@react-navigation/native';
 
-function FreeScreen({navigation}) {
+function RecruitScreen({navigation}) {
   const {keyword} = useContext(SearchContext);
   const [lists, setLists] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -43,7 +43,7 @@ function FreeScreen({navigation}) {
             lists
               .reverse()
               .map(free => (
-                <FreeList
+                <RecruitList
                   date={free.time}
                   title={free.title}
                   body={free.text}
@@ -53,7 +53,7 @@ function FreeScreen({navigation}) {
           )}
         </View>
       </ScrollView>
-      <FloatingWriteButton />
+      <RecruitFloatingWriteButton />
     </View>
   );
 }
@@ -95,4 +95,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FreeScreen;
+export default RecruitScreen;

@@ -15,14 +15,13 @@ import SearchContext from '../contexts/SearchContext';
 import {BASE_URL} from '../config';
 import {useIsFocused} from '@react-navigation/native';
 
-function FreeScreen({navigation}) {
-  const {keyword} = useContext(SearchContext);
+function FreeSearchScreen({navigation}) {
   const [lists, setLists] = useState([]);
   const [loading, setLoading] = useState(true);
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    fetch(`${BASE_URL}/api/community/`)
+    fetch(`${BASE_URL}/api/community/`) //검색해서 해당 내용만 출력
       .then(response => response.json())
       .then(json => setLists(json))
       .catch(error => console.error(error))
@@ -95,4 +94,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FreeScreen;
+export default FreeSearchScreen;

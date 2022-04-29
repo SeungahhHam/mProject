@@ -8,21 +8,13 @@ import {
   StyleSheet,
   Alert,
 } from 'react-native';
-import Spinner from 'react-native-loading-spinner-overlay';
+import {BASE_URL} from '../config';
 
 function RegisterScreen({navigation}) {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const WelcomeAlert = () =>
-    Alert.alert('회원가입이 완료되었습니다!', '로그인 페이지로 돌아갑니다', [
-      {
-        text: '확인',
-        onPress: () => navigation.navigate('Login'),
-        style: 'cancel',
-      },
-    ]);
 
   const registerButton = () => {
     if (!userName) {
@@ -46,7 +38,7 @@ function RegisterScreen({navigation}) {
 
     console.log(dataToSend);
 
-    fetch(`http://172.16.197.168:5000/api/user/register`, {
+    fetch(`${BASE_URL}/api/user/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -57,13 +49,11 @@ function RegisterScreen({navigation}) {
         const jsonRes = await res.json();
         console.log(jsonRes);
         console.log('yes');
-        setLoading(true);
+        Alert.alert('회원가입이 완료되었습니다', '  ', [
+          {text: '로그인 하러가기', onPress: () => navigation.replace('Login')},
+        ]);
       } catch (err) {
         console.log(err);
-        setLoading(false);
-      }
-      {
-        loading ? WelcomeAlert : console.log('실패');
       }
     });
   };
@@ -86,10 +76,10 @@ function RegisterScreen({navigation}) {
           style={styles.input}
           placeholder="Enter password"
           onChangeText={userPassword => setUserPassword(userPassword)}
+          secureTextEntry
         />
 
         <Button title="회원가입" onPress={registerButton}></Button>
-        <Button title="테스팅" onPress={WelcomeAlert}></Button>
 
         <View style={{flexDirection: 'row', marginTop: 20}}>
           <Text>Already have an account? </Text>

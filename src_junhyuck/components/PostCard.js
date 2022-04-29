@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, StyleSheet, Text, Image, Pressable} from 'react-native';
-import UserInfoScreen from '../screens/UserInfoScreen';
 
 function PostCard() {
   const onOpenProfile = () => {};
