@@ -22,3 +22,15 @@ apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 빼놓은 라이브러리 있을수도 있으니 실행시켜보고 오류 비교해가면서 라이브러리 추가로 다운받으세요
 
 
+<<<<<<< junhyuck
+---------추가라이브러리(4/30)-----------
+yarn add uuid
+yarn add react-native-get-random-values
+yarn add @react-native-community/async-storage
+yarn add date-fns	//날짜 포맷팅 라이브러리
+yarn add react-native-swiper	//슬라이드쇼 라이브러리
+yarn add react-native-progress	// 상태진행바 관련 라이브러리
+=======
+-------------------------------------
+빼놓은 라이브러리 있을수도 있으니 실행시켜보고 오류 비교해가면서 라이브러리 추가로 다운받으세요!!
+>>>>>>> main
