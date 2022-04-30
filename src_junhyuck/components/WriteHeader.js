@@ -19,8 +19,6 @@ function WriteHeader({onSave}) {
         />
       </View>
       <View style={styles.buttons}>
-        <TransparentCircleButton name="delete-forever" color="#ef5350" />
-
         <TransparentCircleButton
           name="check"
           color="#009688"

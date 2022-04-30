@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useState} from 'react';
 import {
   Pressable,
   StyleSheet,
@@ -7,11 +7,15 @@ import {
   View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import SearchContext from '../contexts/SearchContext';
+import {useNavigation} from '@react-navigation/native';
 
-function SearchBar({navigation}) {
+function SearchBar() {
   const {width} = useWindowDimensions();
-  const {keyword, onChangeText} = useContext(SearchContext);
+  const [keyword, onChangeText] = useState('');
+  const navigation = useNavigation();
+  const onGoSearch = () => {
+    navigation.navigate('FreeSearch');
+  };
 
   return (
     <View style={[styles.block, {width: width - 32}]}>
@@ -29,7 +33,7 @@ function SearchBar({navigation}) {
       </Pressable>
       <Pressable
         style={({pressed}) => [styles.button, pressed && {opacity: 0.5}]}
-        onPress={() => onChangeText('')}>
+        onPress={onGoSearch}>
         <Icon name="search" size={20} color="#9e9e9e" />
       </Pressable>
     </View>

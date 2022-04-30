@@ -9,30 +9,32 @@ import {
   TextInput,
   Keyboard,
   Modal,
-  ScrollView,
+  Alert,
   Button,
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
+import {BASE_URL} from '../config';
 
 function LoginScreen({navigation}) {
-  const [userId, setUserId] = useState('');
+  const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
-  const [userPasswordchk, setUserPasswordchk] = useState('');
   const [loading, setLoading] = useState(false);
-  const [errortext, setErrortext] = useState('');
-  const [errortext2, setErrortext2] = useState('');
-  const [isRegistraionSuccess, setIsRegistraionSuccess] = useState(false);
 
   const handleSubmitButton = () => {
-    setErrortext('');
-
+    if (!userEmail) {
+      alert('아이디를 입력하세요');
+      return;
+    }
+    if (!userPassword) {
+      alert('비밀번호를 입력하세요');
+      return;
+    }
     var dataToSend = {
-      email: userId,
+      email: userEmail,
       password: userPassword,
     };
 
-    console.log(dataToSend);
-
-    fetch(`http://172.16.197.168:5000/api/user/login`, {
+    fetch(`${BASE_URL}/api/user/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,7 +44,14 @@ function LoginScreen({navigation}) {
       try {
         const jsonRes = await res.json();
         console.log(jsonRes);
-        console.log('yes');
+        if (jsonRes.loginSuccess === true) {
+          AsyncStorage.setItem('userData', JSON.stringify(dataToSend.email));
+          console.log(JSON.stringify(dataToSend.email));
+          navigation.replace('MainTab');
+        } else {
+          console.log('Please check your id or password');
+          Alert.alert('아이디와 비밀번호를 다시 확인해주세요');
+        }
       } catch (err) {
         console.log(err);
       }
@@ -55,13 +64,9 @@ function LoginScreen({navigation}) {
       <View style={styles.form}>
         <TextInput
           style={[styles.input, styles.margin]}
-          placeholder={'아이디'}
-          onChangeText={userId => setUserId(userId)}
+          placeholder={'이메일'}
+          onChangeText={userEmail => setUserEmail(userEmail)}
           autoCapitalize="none"
-          returnKeyType="next"
-          onSubmitEditing={() =>
-            passwordInputRef.current && passwordInputRef.current.focus()
-          }
           underlineColorAndroid="#f000"
           blurOnSubmit={false}
         />
@@ -70,12 +75,9 @@ function LoginScreen({navigation}) {
           placeholder={'비밀번호'}
           onChangeText={userPassword => setUserPassword(userPassword)}
           autoCapitalize="none"
-          returnKeyType="next"
-          onSubmitEditing={() =>
-            passwordchkInputRef.current && passwordchkInputRef.current.focus()
-          }
           underlineColorAndroid="#f000"
           blurOnSubmit={false}
+          secureTextEntry
         />
         <Button title="로그인" onPress={handleSubmitButton}></Button>
         <View style={{flexDirection: 'row', marginTop: 20}}>
@@ -114,6 +116,9 @@ const styles = StyleSheet.create({
   },
   margin: {
     marginBottom: 16,
+  },
+  link: {
+    color: 'blue',
   },
 });
 

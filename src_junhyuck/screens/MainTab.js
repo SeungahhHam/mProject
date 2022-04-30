@@ -16,7 +16,7 @@ function MainTab() {
     navigation.navigate('UserInfo');
   };
   const onGoLogin = () => {
-    navigation.navigate('Login');
+    navigation.navigate('Auth');
   };
   return (
     <>
