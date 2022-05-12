@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using System;
+using System.Text;
+
+using UnityEngine.Networking;
+using UnityEngine.UI;
+
 
 public class ARPlaceOnPlane : MonoBehaviour
 {
@@ -13,27 +18,22 @@ public class ARPlaceOnPlane : MonoBehaviour
     public GameObject placeObject2; /*가을*/
     public GameObject placeObject3; /*겨울*/
 
-
     GameObject spawnObject;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    [SerializeField] Text mention;
 
-    }
 
-    // Update is called once per frame
     void Update()
     {
         PlaceObjectByTouch();
-        // UpdateCenterObject();
+        StartCoroutine(UnityWebRequestPOSTTEST());
     }
 
     private void PlaceObjectByTouch()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0) // 첫 번째 터치 : TreeSpawn
         {
-           
+
             Touch touch = Input.GetTouch(0);
             List<ARRaycastHit> hits = new List<ARRaycastHit>();
             if (arRaycaster.Raycast(touch.position, hits, TrackableType.Planes))
@@ -42,47 +42,51 @@ public class ARPlaceOnPlane : MonoBehaviour
 
                 if (!spawnObject)
                 {
-                    if (DateTime.Now.ToString("MM") == "03" && DateTime.Now.ToString("MM") == "04" && DateTime.Now.ToString("MM") == "05")
+                    if (DateTime.Now.ToString("MM") == "03" || DateTime.Now.ToString("MM") == "04" || DateTime.Now.ToString("MM") == "05")
                         spawnObject = Instantiate(placeObject, hitPose.position, hitPose.rotation);
-                    else if (DateTime.Now.ToString("MM") == "06" && DateTime.Now.ToString("MM") == "07" && DateTime.Now.ToString("MM") == "08")
+                    else if (DateTime.Now.ToString("MM") == "06" || DateTime.Now.ToString("MM") == "07" || DateTime.Now.ToString("MM") == "08")
                         spawnObject = Instantiate(placeObject1, hitPose.position, hitPose.rotation);
-                    else if (DateTime.Now.ToString("MM") == "09" && DateTime.Now.ToString("MM") == "10")
+                    else if (DateTime.Now.ToString("MM") == "09" || DateTime.Now.ToString("MM") == "10")
                         spawnObject = Instantiate(placeObject2, hitPose.position, hitPose.rotation);
                     else
                         spawnObject = Instantiate(placeObject3, hitPose.position, hitPose.rotation);
-                    //plane.gameObject.SetActive(false);
-                }
-                else
-                {
-                    /*if (DateTime.Now.ToString("MM") == "04")
-                        today3.text = DateTime.Now.ToString("MM월");
-                    else
-                        today3.text = DateTime.Now.ToString("MM힝");*/
-                    /*spawnObject.transform.position = hitPose.position;
-                    spawnObject.transform.rotation = hitPose.rotation;*/
 
                 }
             }
         }
-
     }
 
-    private void UpdateCenterObject()
+    IEnumerator UnityWebRequestPOSTTEST()
     {
-        Vector3 screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
+        string url1 = "http://localhost:5000/get"; //3.34.32.228:5000/api/unity/get
+        UnityWebRequest www1 = UnityWebRequest.Get(url1);
+        yield return www1.SendWebRequest();
 
-        List<ARRaycastHit> hits = new List<ARRaycastHit>();
-        arRaycaster.Raycast(screenCenter, hits, TrackableType.Planes);
-
-        if (hits.Count > 0)
+        if (www1.error == null)
         {
-            Pose placementPose = hits[0].pose;
-            placeObject.SetActive(true);
-            placeObject.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
+            Debug.Log(www1.downloadHandler.text);
+            string result = www1.downloadHandler.text;
+            mention.text = result + " 인증 완료!";
+
+
+            WWWForm form = new WWWForm();
+            form.AddField("message", "android");
+            UnityWebRequest www = UnityWebRequest.Post("http://localhost:5000/post", form);
+            yield return www.SendWebRequest();
+
+            if (www.error == null)
+            {
+                Debug.Log(www.downloadHandler.text);
+            }
+            else
+            {
+                Debug.Log("error");
+            }
         }
         else
         {
-            placeObject.SetActive(false);
+            Debug.Log("error");
         }
     }
+
 }

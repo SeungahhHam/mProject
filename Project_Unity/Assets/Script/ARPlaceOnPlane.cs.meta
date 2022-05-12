@@ -3,7 +3,13 @@ guid: a0e230e25214a0d439eaf7d1a2f522a3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - arRaycaster: {instanceID: 0}
+  - placeObject: {fileID: 6464527023880025943, guid: 3265a59f24a60eb4da338ca3ae16355e, type: 3}
+  - placeObject1: {fileID: 564484552900849658, guid: bbfd0b345a3e06848aec024ef8d8d1d1, type: 3}
+  - placeObject2: {fileID: 7595593369900613763, guid: aeb372bb979975c4f92be9c02a35fa8c, type: 3}
+  - placeObject3: {fileID: 7769437130357193433, guid: cf73f734271e96642956781634ccdac9, type: 3}
+  - mention: {fileID: 3239616548375797749, guid: f81c00d4fc54746469be7f8538ba64a7, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

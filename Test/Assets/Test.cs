@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
+using System;
+using System.Text;
 
 public class Test : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] Text mention;
+
     void Start()
-    {
+    {  
         StartCoroutine(UnityWebRequestPOSTTEST());
     }
 
@@ -20,6 +24,10 @@ public class Test : MonoBehaviour
         if (www1.error == null)
         {
             Debug.Log(www1.downloadHandler.text);
+            string result = www1.downloadHandler.text;
+            mention.text = result + "을 인증하였습니다.";
+
+
             WWWForm form = new WWWForm();
             form.AddField("message", "android");
             UnityWebRequest www = UnityWebRequest.Post("http://3.34.32.228:5000/api/unity/post", form);

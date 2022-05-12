@@ -9,10 +9,8 @@ public class Quit : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             GameQuit();
     }
-
     public void GameQuit()
     {
         Application.Quit();
-
     }
 }
