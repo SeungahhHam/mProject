@@ -26,7 +26,6 @@ public class ARPlaceOnPlane : MonoBehaviour
     void Update()
     {
         PlaceObjectByTouch();
-        StartCoroutine(UnityWebRequestPOSTTEST());
     }
 
     private void PlaceObjectByTouch()
@@ -52,13 +51,18 @@ public class ARPlaceOnPlane : MonoBehaviour
                         spawnObject = Instantiate(placeObject3, hitPose.position, hitPose.rotation);
 
                 }
+                else
+                {
+                    StartCoroutine(UnityWebRequestPOSTTEST());
+                }
             }
         }
     }
 
+
     IEnumerator UnityWebRequestPOSTTEST()
     {
-        string url1 = "http://localhost:5000/get"; //3.34.32.228:5000/api/unity/get
+        string url1 = "http://3.34.32.228:5000/api/unity/get"; //3.34.32.228:5000/api/unity/get
         UnityWebRequest www1 = UnityWebRequest.Get(url1);
         yield return www1.SendWebRequest();
 
@@ -71,7 +75,7 @@ public class ARPlaceOnPlane : MonoBehaviour
 
             WWWForm form = new WWWForm();
             form.AddField("message", "android");
-            UnityWebRequest www = UnityWebRequest.Post("http://localhost:5000/post", form);
+            UnityWebRequest www = UnityWebRequest.Post("http://3.34.32.228:5000/api/unity/post", form);
             yield return www.SendWebRequest();
 
             if (www.error == null)
