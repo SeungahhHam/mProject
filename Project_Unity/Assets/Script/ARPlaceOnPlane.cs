@@ -20,7 +20,7 @@ public class ARPlaceOnPlane : MonoBehaviour
 
     GameObject spawnObject;
 
-    [SerializeField] Text mention;
+    [SerializeField] Text text;
 
 
     void Update()
@@ -70,7 +70,7 @@ public class ARPlaceOnPlane : MonoBehaviour
         {
             Debug.Log(www1.downloadHandler.text);
             string result = www1.downloadHandler.text;
-            mention.text = result + " 인증 완료!";
+            text.text = result + " 인증 완료!";
 
 
             WWWForm form = new WWWForm();

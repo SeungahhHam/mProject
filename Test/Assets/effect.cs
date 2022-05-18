@@ -1,11 +1,11 @@
-ï»¿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Text;
 
-public class TextFade : MonoBehaviour
+public class effect : MonoBehaviour
 {
     [SerializeField] Text text;
 
@@ -16,7 +16,7 @@ public class TextFade : MonoBehaviour
         StartCoroutine(WaitForIt());
     }
 
-    public IEnumerator FadeTextToFullAlpha() // ì•ŒíŒŒê°’ 0ì—ì„œ 1ë¡œ ì „í™˜
+    public IEnumerator FadeTextToFullAlpha() // ¾ËÆÄ°ª 0¿¡¼­ 1·Î ÀüÈ¯
     {
         text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
         while (text.color.a < 1.0f)

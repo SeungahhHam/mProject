@@ -8,7 +8,7 @@ using System.Text;
 
 public class Test : MonoBehaviour
 {
-    [SerializeField] Text mention;
+    [SerializeField] Text text;
 
     void Start()
     {  
@@ -25,7 +25,7 @@ public class Test : MonoBehaviour
         {
             Debug.Log(www1.downloadHandler.text);
             string result = www1.downloadHandler.text;
-            mention.text = result + "을 인증하였습니다.";
+            text.text = result + "을 인증하였습니다.";
 
 
             WWWForm form = new WWWForm();
